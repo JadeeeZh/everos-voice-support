@@ -1,0 +1,421 @@
+{
+ "session_id": "call-005",
+ "app_id": "voice-support",
+ "project_id": "handson",
+ "messages": [
+  {
+   "sender_id": "support-agent",
+   "role": "assistant",
+   "content": "Hi! How can I help you today?",
+   "timestamp": 1756345600000
+  },
+  {
+   "sender_id": "cust-005",
+   "role": "user",
+   "content": "Hello! I’m having an issue with my mobile data—it either stops working completely or is very slow. I really need to get excellent internet speed on my phone while I’m abroad. Can you help me fix this? I don’t have access to Wi-Fi, so I need to rely on mobile data.",
+   "timestamp": 1756345615000
+  },
+  {
+   "sender_id": "support-agent",
+   "role": "assistant",
+   "content": "I can help you with your mobile data issue. To get started, I’ll need to verify your account. Could you please provide either your phone number, customer ID, or your full name and date of birth? This will help me identify your account and the specific line you’re using abroad.",
+   "timestamp": 1756345630000
+  },
+  {
+   "sender_id": "cust-005",
+   "role": "user",
+   "content": "Sure! My name is John Smith, and my phone number is 555-123-2002. Let me know if you need any more information to verify my account.",
+   "timestamp": 1756345645000
+  },
+  {
+   "sender_id": "support-agent",
+   "role": "assistant",
+   "content": "",
+   "tool_calls": [
+    {
+     "id": "call_C2PpKLgXvRifSrsSaMMp8XNz",
+     "type": "function",
+     "function": {
+      "name": "get_customer_by_phone",
+      "arguments": "{\"phone_number\": \"555-123-2002\"}"
+     }
+    }
+   ],
+   "timestamp": 1756345660000
+  },
+  {
+   "sender_id": "support-agent",
+   "role": "tool",
+   "content": "{\"customer_id\": \"C1001\", \"full_name\": \"John Smith\", \"date_of_birth\": \"1985-06-15\", \"email\": \"john.smith@example.com\", \"phone_number\": \"555-123-2002\", \"address\": {\"street\": \"123 Main St\", \"city\": \"Anytown\", \"state\": \"CA\", \"zip_code\": \"90210\"}, \"account_status\": \"Active\", \"payment_methods\": [{\"method_type\": \"Credit Card\", \"account_number_last_4\": \"1235\", \"expiration_date\": \"12/2026\"}], \"line_ids\": [\"L1001\", \"L1002\", \"L1003\"], \"bill_ids\": [\"B1001\", \"B1002\", \"B1003\"], \"created_at\": \"2025-01-15 10:30:00\", \"last_extension_date\": null, \"goodwill_credit_used_this_year\": 25.0}",
+   "tool_call_id": "call_C2PpKLgXvRifSrsSaMMp8XNz",
+   "timestamp": 1756345675000
+  },
+  {
+   "sender_id": "support-agent",
+   "role": "assistant",
+   "content": "Thank you for providing your information. I’ve found your account and see that you have multiple lines. Could you please confirm which phone number (or line) you are currently using abroad and experiencing the mobile data issue with? This will help me check the specific line’s status and settings.",
+   "timestamp": 1756345690000
+  },
+  {
+   "sender_id": "cust-005",
+   "role": "user",
+   "content": "I’m having this issue with my line—555-123-2002, which is the one I’m using abroad right now.",
+   "timestamp": 1756345705000
+  },
+  {
+   "sender_id": "support-agent",
+   "role": "assistant",
+   "content": "",
+   "tool_calls": [
+    {
+     "id": "call_C0eFG7frZrG7NTDo6a5l6SIw",
+     "type": "function",
+     "function": {
+      "name": "get_details_by_id",
+      "arguments": "{\"id\": \"L1002\"}"
+     }
+    }
+   ],
+   "timestamp": 1756345720000
+  },
+  {
+   "sender_id": "support-agent",
+   "role": "tool",
+   "content": "{\"line_id\": \"L1002\", \"phone_number\": \"555-123-2002\", \"status\": \"Active\", \"plan_id\": \"P1002\", \"device_id\": \"D1002\", \"data_used_gb\": 15.1, \"data_refueling_gb\": 0.0, \"roaming_enabled\": true, \"contract_end_date\": \"2026-12-31\", \"last_plan_change_date\": \"2024-12-15\", \"last_sim_replacement_date\": \"2025-01-20\", \"suspension_start_date\": null}",
+   "tool_call_id": "call_C0eFG7frZrG7NTDo6a5l6SIw",
+   "timestamp": 1756345735000
+  },
+  {
+   "sender_id": "support-agent",
+   "role": "assistant",
+   "content": "",
+   "tool_calls": [
+    {
+     "id": "call_5KkXXjBO7u7DnCXp3kzHgbvU",
+     "type": "function",
+     "function": {
+      "name": "get_details_by_id",
+      "arguments": "{\"id\": \"P1002\"}"
+     }
+    }
+   ],
+   "timestamp": 1756345750000
+  },
+  {
+   "sender_id": "support-agent",
+   "role": "tool",
+   "content": "{\"plan_id\": \"P1002\", \"name\": \"Premium Plan\", \"data_limit_gb\": 15.0, \"price_per_month\": 65.0, \"data_refueling_price_per_gb\": 2.0}",
+   "tool_call_id": "call_5KkXXjBO7u7DnCXp3kzHgbvU",
+   "timestamp": 1756345765000
+  },
+  {
+   "sender_id": "support-agent",
+   "role": "assistant",
+   "content": "Your line (555-123-2002) is active and currently on the Premium Plan, which has a 15GB monthly data limit. You have already used 15.1GB, which means you’ve exceeded your plan’s data allowance. This is likely why your mobile data is slow or not working.\n\nYou have two options to restore high-speed data:\n1. Refuel (add) up to 2GB of extra data at $2.00 per GB.\n2. Change to a plan with a higher data limit.\n\nWould you like to refuel data now, or are you interested in exploring other plan options? If you want to refuel, please let me know how many GB (up to 2GB) you’d like to add.",
+   "timestamp": 1756345780000
+  },
+  {
+   "sender_id": "cust-005",
+   "role": "user",
+   "content": "I’d like to refuel 2.0 GB of extra data, please. I’m not interested in changing my plan—I just want to get the best internet speed possible while I’m abroad. What’s the next step?",
+   "timestamp": 1756345795000
+  },
+  {
+   "sender_id": "support-agent",
+   "role": "assistant",
+   "content": "",
+   "tool_calls": [
+    {
+     "id": "call_ep9qV28ZGki3rScBMO1AP51G",
+     "type": "function",
+     "function": {
+      "name": "refuel_data",
+      "arguments": "{\"customer_id\": \"C1001\", \"line_id\": \"L1002\", \"gb_amount\": 2.0}"
+     }
+    }
+   ],
+   "timestamp": 1756345810000
+  },
+  {
+   "sender_id": "support-agent",
+   "role": "tool",
+   "content": "{\"message\": \"Successfully added 2.0 GB of data for line L1002 for $4.00\", \"new_data_refueling_gb\": \"2.0\", \"charge\": \"4.0\"}",
+   "tool_call_id": "call_ep9qV28ZGki3rScBMO1AP51G",
+   "timestamp": 1756345825000
+  },
+  {
+   "sender_id": "support-agent",
+   "role": "assistant",
+   "content": "2.0 GB of extra data has been successfully added to your line (555-123-2002) for $4.00. You should now have restored high-speed mobile data while abroad.\n\nIf you don’t see an immediate improvement, please try restarting your phone to ensure the new data is applied. Let me know if you need further assistance!",
+   "timestamp": 1756345840000
+  },
+  {
+   "sender_id": "support-agent",
+   "role": "assistant",
+   "content": "(guides the customer through a device action)",
+   "tool_calls": [
+    {
+     "id": "call_7fmJBcP6Y2ssZgY9ekSpQqnY",
+     "type": "function",
+     "function": {
+      "name": "device_run_speed_test",
+      "arguments": "{}"
+     }
+    }
+   ],
+   "timestamp": 1756345855000
+  },
+  {
+   "sender_id": "support-agent",
+   "role": "tool",
+   "content": "Speed test failed: No Connection.",
+   "tool_call_id": "call_7fmJBcP6Y2ssZgY9ekSpQqnY",
+   "timestamp": 1756345870000
+  },
+  {
+   "sender_id": "cust-005",
+   "role": "user",
+   "content": "I’ve added the extra data, but my internet still doesn’t seem to be working properly. I tried testing my connection, and it says “No Connection.” Is there anything else I should try?",
+   "timestamp": 1756345885000
+  },
+  {
+   "sender_id": "support-agent",
+   "role": "assistant",
+   "content": "Thank you for letting me know. Since you’ve refueled data but still have no connection, let’s troubleshoot your device and network settings step by step.\n\nFirst, please check your phone’s status bar for the following:\n- Is Airplane Mode enabled?\n- Do you see any signal bars or network type indicators (like 4G, 5G)?\n- Is mobile data enabled?\n\nIf you’re not sure, I can guide you through checking these settings. Could you please confirm what you see in your phone’s status bar, or let me know if you’d like step-by-step instructions to check these indicators?",
+   "timestamp": 1756345900000
+  },
+  {
+   "sender_id": "support-agent",
+   "role": "assistant",
+   "content": "(guides the customer through a device action)",
+   "tool_calls": [
+    {
+     "id": "call_OUK8af4HeoMI3XKVR0Mz0kUl",
+     "type": "function",
+     "function": {
+      "name": "device_check_status_bar",
+      "arguments": "{}"
+     }
+    }
+   ],
+   "timestamp": 1756345915000
+  },
+  {
+   "sender_id": "support-agent",
+   "role": "tool",
+   "content": "Status Bar: 📶⁴ Excellent | 5G | 📱 Data Enabled | 🔋 80%",
+   "tool_call_id": "call_OUK8af4HeoMI3XKVR0Mz0kUl",
+   "timestamp": 1756345930000
+  },
+  {
+   "sender_id": "cust-005",
+   "role": "user",
+   "content": "Looking at my phone’s status bar, I see that I have excellent signal with 5G, mobile data is enabled, and Airplane Mode is not on. What should I try next?",
+   "timestamp": 1756345945000
+  },
+  {
+   "sender_id": "support-agent",
+   "role": "assistant",
+   "content": "Thank you for checking those details. Since you have excellent signal, 5G connectivity, and mobile data is enabled, let’s check if there might be an issue with your SIM card or network settings.\n\nNext, please check your SIM card status:\n- Is your SIM card showing as active, missing, or locked?\n\nIf you’re not sure how to check this, I can guide you through the process. Would you like instructions on how to check your SIM card status?",
+   "timestamp": 1756345960000
+  },
+  {
+   "sender_id": "support-agent",
+   "role": "assistant",
+   "content": "(guides the customer through a device action)",
+   "tool_calls": [
+    {
+     "id": "call_XKDnUNrV45XOikeFxjvlQFNR",
+     "type": "function",
+     "function": {
+      "name": "device_check_sim_status",
+      "arguments": "{}"
+     }
+    }
+   ],
+   "timestamp": 1756345975000
+  },
+  {
+   "sender_id": "support-agent",
+   "role": "tool",
+   "content": "Your SIM card is active and working.",
+   "tool_call_id": "call_XKDnUNrV45XOikeFxjvlQFNR",
+   "timestamp": 1756345990000
+  },
+  {
+   "sender_id": "cust-005",
+   "role": "user",
+   "content": "My SIM card is showing as active and working properly. What should I do next?",
+   "timestamp": 1756346005000
+  },
+  {
+   "sender_id": "support-agent",
+   "role": "assistant",
+   "content": "Since your SIM card is active and all basic connectivity indicators look good, the next step is to check your phone’s APN (Access Point Name) settings. Incorrect APN settings can prevent mobile data from working, even if everything else appears normal.\n\nCould you please check your APN settings and let me know if anything looks incorrect or if the APN/MMSC fields are empty? If you’re unsure how to check, I can provide step-by-step instructions. Would you like guidance on how to check or reset your APN settings?",
+   "timestamp": 1756346020000
+  },
+  {
+   "sender_id": "support-agent",
+   "role": "assistant",
+   "content": "(guides the customer through a device action)",
+   "tool_calls": [
+    {
+     "id": "call_329ZsYQaMrZvyXxNkxN5RwDu",
+     "type": "function",
+     "function": {
+      "name": "device_check_apn_settings",
+      "arguments": "{}"
+     }
+    }
+   ],
+   "timestamp": 1756346035000
+  },
+  {
+   "sender_id": "support-agent",
+   "role": "tool",
+   "content": "Current APN Name: internet\nMMSC URL (for picture messages): http://mms.carrier.com/mms/wapenc\n(These are technical settings, usually best left unchanged.)",
+   "tool_call_id": "call_329ZsYQaMrZvyXxNkxN5RwDu",
+   "timestamp": 1756346050000
+  },
+  {
+   "sender_id": "cust-005",
+   "role": "user",
+   "content": "My current APN is set to \"internet,\" and the MMSC URL is filled in as \"http://mms.carrier.com/mms/wapenc.\" Does this look correct, or do I need to change anything?",
+   "timestamp": 1756346065000
+  },
+  {
+   "sender_id": "support-agent",
+   "role": "assistant",
+   "content": "Thank you for providing your APN and MMSC details. Those settings appear to be correct for most carriers, so the APN is likely not the issue.\n\nLet’s try the following next steps:\n1. Restart your device if you haven’t already, as this can help apply any recent changes (like the data refuel).\n2. If you’ve already restarted and still have no connection, try resetting your APN settings to default and then restart your device again.\n\nWould you like instructions on how to reset your APN settings, or have you already tried this step?",
+   "timestamp": 1756346080000
+  },
+  {
+   "sender_id": "support-agent",
+   "role": "assistant",
+   "content": "(guides the customer through a device action)",
+   "tool_calls": [
+    {
+     "id": "call_eGuQR8JT3g9PPE083SEb8FeA",
+     "type": "function",
+     "function": {
+      "name": "device_reset_apn_settings",
+      "arguments": "{}"
+     }
+    }
+   ],
+   "timestamp": 1756346095000
+  },
+  {
+   "sender_id": "support-agent",
+   "role": "tool",
+   "content": "APN settings will reset at reboot.\nStatus Bar: 📶⁴ Excellent | 5G | 📱 Data Enabled | 🔋 80%",
+   "tool_call_id": "call_eGuQR8JT3g9PPE083SEb8FeA",
+   "timestamp": 1756346110000
+  },
+  {
+   "sender_id": "support-agent",
+   "role": "assistant",
+   "content": "(guides the customer through a device action)",
+   "tool_calls": [
+    {
+     "id": "call_7GcwyVMdDcb5Tp6IVJDmRGLN",
+     "type": "function",
+     "function": {
+      "name": "device_reboot_device",
+      "arguments": "{}"
+     }
+    }
+   ],
+   "timestamp": 1756346125000
+  },
+  {
+   "sender_id": "support-agent",
+   "role": "tool",
+   "content": "Resetting APN settings...\nRestarting network services...\nStatus Bar: 📶⁴ Excellent | 5G | 📱 Data Enabled | 🔋 80%",
+   "tool_call_id": "call_7GcwyVMdDcb5Tp6IVJDmRGLN",
+   "timestamp": 1756346140000
+  },
+  {
+   "sender_id": "support-agent",
+   "role": "assistant",
+   "content": "(guides the customer through a device action)",
+   "tool_calls": [
+    {
+     "id": "call_TJtFlMTkNJbXLTr9iL5ZcLBS",
+     "type": "function",
+     "function": {
+      "name": "device_run_speed_test",
+      "arguments": "{}"
+     }
+    }
+   ],
+   "timestamp": 1756346155000
+  },
+  {
+   "sender_id": "support-agent",
+   "role": "tool",
+   "content": "Speed test failed: No Connection.",
+   "tool_call_id": "call_TJtFlMTkNJbXLTr9iL5ZcLBS",
+   "timestamp": 1756346170000
+  },
+  {
+   "sender_id": "cust-005",
+   "role": "user",
+   "content": "I’ve reset my APN settings to default and restarted my device, but I’m still getting “No Connection” when I try to test my internet speed. What else can we try? I really need to get excellent internet speed on my phone.",
+   "timestamp": 1756346185000
+  },
+  {
+   "sender_id": "support-agent",
+   "role": "assistant",
+   "content": "Thank you for following those steps. Since you have:\n- An active account and line,\n- Roaming enabled,\n- Sufficient data refueled,\n- Correct APN settings,\n- Excellent signal and 5G connectivity,\n- And have already restarted your device,\n\nbut are still experiencing “No Connection,” this suggests a deeper technical issue that cannot be resolved through standard troubleshooting.\n\nI will transfer you to a human agent who can further investigate and resolve this issue for you.",
+   "tool_calls": [
+    {
+     "id": "call_WR1TesgYudDHz4lsjB1IE3Y3",
+     "type": "function",
+     "function": {
+      "name": "transfer_to_human_agents",
+      "arguments": "{\"summary\": \"Customer John Smith (line 555-123-2002) is abroad and experiencing no mobile data connection despite having excellent 5G signal, active SIM, roaming enabled, sufficient data refueled, correct APN settings, and after device/APN resets. Needs urgent resolution for mobile data connectivity.\"}"
+     }
+    }
+   ],
+   "timestamp": 1756346200000
+  },
+  {
+   "sender_id": "support-agent",
+   "role": "tool",
+   "content": "Transfer successful",
+   "tool_call_id": "call_WR1TesgYudDHz4lsjB1IE3Y3",
+   "timestamp": 1756346215000
+  },
+  {
+   "sender_id": "support-agent",
+   "role": "assistant",
+   "content": "YOU ARE BEING TRANSFERRED TO A HUMAN AGENT. PLEASE HOLD ON.",
+   "timestamp": 1756346230000
+  },
+  {
+   "sender_id": "cust-005",
+   "role": "user",
+   "content": "Understood, I’ll wait for the human agent. Thank you for your help so far.",
+   "timestamp": 1756346245000
+  },
+  {
+   "sender_id": "support-agent",
+   "role": "assistant",
+   "content": "You’re welcome! A human agent will assist you shortly. Thank you for your patience.",
+   "timestamp": 1756346260000
+  },
+  {
+   "sender_id": "cust-005",
+   "role": "user",
+   "content": "###TRANSFER###",
+   "timestamp": 1756346275000
+  },
+  {
+   "sender_id": "support-agent",
+   "role": "assistant",
+   "content": "Tier-2 specialist resolution note (ticket closed after escalation):\nRoot state found on inspection:\n- assistant.set_data_usage(customer_id='C1001', line_id='L1002', data_used_gb=15.1)\n- user.turn_roaming_off()\n- assistant.enable_roaming(customer_id='C1001', line_id='L1002')\nResolution steps that fixed it:\n- assistant.refuel_data(customer_id='C1001', line_id='L1002', gb_amount=2.0)\n- user.toggle_roaming()\nVerified end state:\n- user.assert_mobile_data_status(expected_status=True)\n- user.assert_internet_speed(expected_speed=200, expected_desc='excellent')\n- assistant.assert_data_refueling_amount(customer_id='C1001', line_id='L1002', expected_amount=2.0)\nHandling note: the call was transferred to a human agent before resolution; the steps above are what ultimately resolved it.",
+   "timestamp": 1756346290000
+  }
+ ]
+}
